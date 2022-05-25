@@ -1,0 +1,80 @@
+<html lang="en">
+    {%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Home</title>
+    <style>
+        #image1{
+            position: absolute;
+            width: 315px;
+            height: 177.19px;
+            left: 274px;
+            top: 176px;
+        }
+        #image2
+        {
+            position: absolute;
+            width: 315px;
+            height: 177.19px;
+            right: 305px;
+            top: 176px;
+        }
+        #image3
+        {
+            position: absolute;
+            width: 315px;
+            height: 177.19px;
+            left: 266px;
+            bottom: 205.81px;
+        }
+        #image4
+        {
+            position: absolute;
+            width: 315px;
+            height: 177.19px;
+            right: 305px;
+            bottom: 205.81px;
+        }
+        #title1,#title2,#title3,#title4
+        {
+            position: absolute;
+            height: 33px;font-family: Open sans-serif;font-style: normal;font-weight: 600;font-size: 24px;line-height: 33px;
+            display: flex;align-items: center;text-align: center;letter-spacing: -0.02em;color: #000000;
+        }
+        #title1
+        {
+            width: 188px;left: 312px;top: 346px;
+        }
+        #title2
+        {
+            width: 137px;right: 412px;top: 346px;
+        }
+        #title3
+        {
+            width: 190px;left: 296px;bottom: 180px;
+        }
+        #title4
+        {
+            width: 213px;right: 374px;bottom: 180px;
+        }
+    </style>
+</head>
+
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+    <img id="image1" src="{% static 'Untitled/Untitled.002.png' %}" alt="">
+    <img id="image2" src="{% static 'Untitled/Untitled.005.png' %}" alt="">
+    <img id="image3" src="{% static 'Untitled/Untitled.004.png' %}" alt="">
+    <img id="image4" src="{% static 'Untitled/Untitled.003.png' %}" alt="">
+    <div id="text">
+        
+        <a id ="title1" href="{% url 'find-customer' %}" target="_blank" rel="noopener noreferrer">Take New Order</a>
+        <a id ="title2" href="{% url 'view-order' %}" target="_blank" rel="noopener noreferrer">View Orders</a>
+        <a id ="title3" href="{% url 'view-supply-order' %}" target="_blank" rel="noopener noreferrer">Manage Supplies</a>
+        <a id ="title4" href="{ % url 'dashboard' %}" target="_blank" rel="noopener noreferrer">View Sales Report</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Create Order</title>
+    <style>
+       .user_card {
+        position: absolute;width: 902px;left: 254px;top: 109px;
+        background: rgba(9, 40, 52, 0.2);
+        border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 15px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		}
+        #orderlist_table
+        {
+background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-left">
+                    <h2 id="heading">Create Order</h2>
+                </div>
+                <br>
+                <div class="d-flex justify-content-left">
+                    <h4>Customer Details For Order ID#&nbsp;{{ o.id }}:</h4>
+                </div>
+                <div class="d-flex justify-content-left">
+                    <h6>Phone : {{ o.customer.c_phone }}</h6>
+                </div>
+                <div class="d-flex justify-content-left">
+                    <h6>Name : {{ o.customer.c_fname }} {{ o.customer.c_lname }}</h6>
+                </div>
+                <br>
+                <br>
+                <div class="justify-content-left">
+                    <form method="post" action="#" id="orderlist-form">
+                        {%csrf_token%}
+                        <div class="d-flex justify-content-between">
+                            <div class="form-group">
+                                <label for="product" id="productlabel">Product:</label>
+                                {{forms.product}}
+                            </div>
+                            <div class="form-group">
+                                <label for="ol_unit" id="unitlabel">Variant:</label>
+                                <select name="ol_unit" id="ol_unit" class="form-control">
+                                    <option value="">Select Variant</option>
+                                    <option value="1">0.5 Kg</option>
+                                    <option value="2">1 Kg</option>
+                                    <option value="3">1.5 Kg</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ol_exp_date" id="explabel">Expiry Date:</label>
+                                <input type="date" name="ol_exp_date" id="ol_exp_date" class="form-control">
+                            </div>
+                            <div class="d-flex justify-content-center mt-5 login_container">
+                                <button class="btn btn-primary" type="submit">Add Product</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="justify-content-left">
+                        <table class="w3-table w3-striped w3-border" id="orderlist_table" >
+                
+                            <thead class="table-dark">
+                                <tr>
+                                <th>S.No</th>
+                                <th>Product</th>
+                                <th>Rate</th>
+                                <th>Units</th>
+                                <th>Cost</th>
+                                <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if ol %}
+                                {% for ol in ol %}
+                                <tr>
+                                    <td class="serial">{{ forloop.counter }}</td>
+                                    <td>{{ ol.product.p_name }}</td>
+                                    <td>{{ ol.product.p_price }}</td>
+                                    <td>{{ ol.ol_unit }}</td>
+                                    <td>{{ ol.ol_cost }}</td>
+                                    <td>
+                                        <div class="mb-3">
+                                            <span>
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                            <a href="delete/{{ol.id}}">Delete</a>
+                                        </div>
+                                    </td>
+            
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                    <tr><td>No Products Yet</td></tr>
+                                {% endif %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Total:</td>
+                                <td>{{ o.order_amount }}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><a class="btn btn-success" id="create" href="confirm-order/{{o.id}}" target=""rel="noopener noreferrer">Create</a></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class=" d-flex justify-content-right">
+                        <a href="take-home-delivery/{{o.id}}" target="" rel="noopener noreferrer">Home Delivery? </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!--
+        <div id="Outerbox"></div>
+        <div>
+            <p id="heading">Create New Order</p>
+            <p id="c_numlabel">Customer Details For         OrderID#{{ o.id }}:</p>
+            <p id="c_num"> Phone : {{ o.customer.c_phone }}</p>
+            <p id="c_name">Name : {{ o.customer.c_fname }} {{ o.customer.c_lname }}</p>
+        </div>
+        <form method="post" action="#" id="orderlist-form">
+            {%csrf_token%}
+            <div class="form-group">
+                <label for="product" id="productlabel">Product:</label>
+                {{forms.product}}
+            </div>
+            <div class="form-group">
+                <label for="ol_unit" id="unitlabel">Variant:</label>
+                <input type="number" name="ol_unit" id="ol_unit" step="1" class="form-control">
+                <select name="ol_unit" id="ol_unit" class="form-control">
+                    <option value="">Select Variant</option>
+                    <option value="1">0.5 Kg</option>
+                    <option value="2">1 Kg</option>
+                    <option value="3">1.5 Kg</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ol_exp_date" id="explabel">Expiry Date:</label>
+                <input type="date" name="ol_exp_date" id="ol_exp_date" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary" id="button">Add Product</button>
+        </form>
+        <div>
+            <table class="w3-table w3-striped w3-border" id="orderlist_table" >
+                
+                <thead class="table-dark">
+                    <tr>
+                    <th>S.No</th>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Units</th>
+                    <th>Cost</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if ol %}
+                    {% for ol in ol %}
+                    <tr>
+                        <td class="serial">{{ forloop.counter }}</td>
+                        <td>{{ ol.product.p_name }}</td>
+                        <td>{{ ol.product.p_price }}</td>
+                        <td>{{ ol.ol_unit }}</td>
+                        <td>{{ ol.ol_cost }}</td>
+                        <td>
+                            <div class="mb-3">
+                                <span>
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                                <a href="delete/{{ol.id}}">Delete</a>
+                            </div>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                        <tr><td>No Products Yet</td></tr>
+                    {% endif %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total:</td>
+                    <td>{{o.order_amount}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="btn btn-success" id="create" href="confirm-order/{{o.id}}" target="_blank"rel="noopener noreferrer">Create</a></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>  
+</body>
+</html>
+
+-->

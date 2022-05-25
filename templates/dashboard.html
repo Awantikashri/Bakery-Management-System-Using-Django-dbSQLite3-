@@ -1,0 +1,362 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/mdbootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/style.css">
+    <!-- MDBootstrap Datatables  -->
+<script type="text/javascript" src="js/addons/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+    <title>Dashboard</title>
+    <style>
+       .sales_card {
+            position: relative;
+            width: 900px;
+left: 230px;
+background-image: url('/static/4.jpeg/');
+border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		}
+        .piechart_card {
+            position: relative;
+            width: 500px;
+left: 8 0px;
+
+background: white;
+border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		}
+        .bargraph_card{
+            position: relative;
+            height: min-content;
+background: white;
+border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		}
+        #img1
+        {
+        width: 300px;
+height: 100.75px;
+
+        }
+        #img2
+        {
+width: 300px;
+height: 100.75px;
+
+        }
+        #Ordertaken,#customer
+        {
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+{% include 'navbar.html' %}
+    {% load static %}
+        <div class="" style="background-image: url('/static/3.jpg/');">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="">
+                <div class="sales_card">
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-left">
+                            <div class="">
+                                <h1 id="Ordertaken" style="color: wheat;">{{ order }}</h1>
+                            </div>
+                            <br>
+                            <div class="">
+                                <img id="img1" src="{% static 'Untitled/Untitled/Untitled.001.png' %}" alt="">
+                            </div>
+                        </div>
+                        &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;
+                        <div class="d-flex justify-content-left">
+                            <div class="">
+                                <h1 id="customer" style="color: wheat;">{{ customer }}</h1>
+                            </div>
+                            <br>
+                            <div class="">
+                                <img id="img1" src="{% static 'Untitled/Untitled/Untitled.002.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!---
+                    <div class="d-flex justify-content-left">
+                        <div class="justify-content-between">
+                            <h1 id="Ordertaken" style="color: wheat;">{{ order }}</h1>
+                            <img id="img1" src="{% static 'Untitled/Untitled/Untitled.001.png' %}" alt="">
+                        </div>
+                        <div class="justify-content-between"></div>
+                            <h1 id="customer" style="color: wheat;">{{ customer }}</h1>
+                            <img id="img2" src="{% static 'Untitled/Untitled/Untitled.002.png' %}" alt="">
+                        </div>
+                    </div>
+                -->
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="d-flex justify-content-center">
+                <div class="piechart_card">
+                    <div class="">
+                        <h3 style="color: #347B98;">Top 5 Popular Products</h3>
+                    </div>
+                    <br>
+                    <div class="justify-content-left">
+                        <div class="">
+                            <div class="">
+                                 <div class="">
+                                    <div class="bg-white">
+                                        <canvas id="myChart1" width="300" height="200"></canvas>
+                                            <script>
+                                                var ctx = document.getElementById('myChart1').getContext('2d');
+                                                var myChart1 = new Chart(ctx, {
+                                                type: 'pie',
+                                                data: {
+                                            labels: [{% for olp in olp %} '{{olp.product_id}}' ,{% endfor %}],
+                                            datasets: [{
+                                                label: 'Product',
+                                                data: [{% for olp in olp %} '{{olp.total}}' ,{% endfor %}],
+                                                backgroundColor: [
+                                                    '#F0F7D4',
+                                                    '#B2D732',
+                                                    '#66B032',
+                                                    '#347B98',
+                                                    '#092834',
+        
+                    
+                                                ],
+                                                borderColor: [
+                                                    '#F0F7D4',
+                                                    '#B2D732',
+                                                    '#66B032',
+                                                    '#347B98',
+                                                    '#092834',
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                                options: {
+                                                    scales: {
+                                                        yAxes: [{
+                                                            ticks: {
+                                                                beginAtZero: true
+                                                            }
+                                                        }]
+                                                    }
+                                                }
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="justify-content-left">
+                            <div style="height:260px;overflow:auto;">
+                                <table class="table table-bordered table-striped mb-0" style="width: 600px;">
+                                    {% for p in p %}
+                                    <tbody>
+                                        <tr>
+                                            <td>{{p.id}}</td>
+                                            <td>{{p.p_name}}</td>
+                                        </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                <div class="bargraph_card">
+                    <div class="">
+                        <h3 style="color: #347B98;">Today's Orders</h3>
+                    </div>
+                    <br>
+                    <div class="">
+                        <table id="table" class="table table-striped table" id="table" style="width: fit-content;">
+                            <thead style="background-color: #B2D732">
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Order No.</th>
+                                    <th>Customer Name</th>
+                                    <th>Customer Number</th>
+                                    <th>Order Amount</th>
+                                    <th>Delivery</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if o %}
+                                    {% for o in o %}
+                                    <tr>
+                                        <td class="serial">{{ forloop.counter }}</td>
+                                        <td>{{ o.id }}</td>
+                                        <td>{{ o.customer.c_fname }} {{o.customer.c_lname }}</td>
+                                        <td>{{ o.customer.c_phone }}</td>
+                                        <td>{{ o.order_amount }}</td>
+                                        <td>{{ o.delivery_mode }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                            </tbody>
+                            {% if o %}
+                            {% else %}
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                        <tr><td>No Orders</td></tr>
+                            </tfoot>
+                            {% endif %}
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
+            <br>
+    </body>
+    </html>
+<!---
+                <div class="bargraph_card">
+                    <div class="d-flex justify-content-right">
+                        <div class="col-md-6">
+                            <div class="bg-white">
+                                <canvas id="myChart" width="400" height="300"></canvas>
+                                <script>
+                                    var ctx = document.getElementById('myChart').getContext('2d');
+                                    var myChart = new Chart(ctx, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: [{% for olp in olp %} '{{olp.product_id}}' ,{% endfor %}],
+                                            datasets: [{
+                                                label: 'Product',
+                                                data: [{% for olp in olp %} '{{olp.total}}' ,{% endfor %}],
+                                                backgroundColor: [
+                                                    '#F0F7D4',
+                                                    '#B2D732',
+                                                    '#66B032',
+                                                    '#347B98',
+                                                    '#092834',
+        
+                    
+                                                ],
+                                                borderColor: [
+                                                    '#F0F7D4',
+                                                    '#B2D732',
+                                                    '#66B032',
+                                                    '#347B98',
+                                                    '#092834',
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true
+                                                    }
+                                                }]
+                                            }
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+    </body>
+    </html>
+    
+            <img src="{% static '3.jpg' %}" alt="My image" style="position: absolute; width:1450px;">
+            <div id="user_card"></div>
+            <h1 id="Ordertaken">{{ order }}
+            </h1>
+            <img id="img1" src="{% static 'Untitled/Untitled/Untitled.001.png' %}" alt="">
+            <h1 id="customer">{{ customer }}</h1>
+            <img id="img2" src="{% static 'Untitled/Untitled/Untitled.002.png' %}" alt="">
+            <div class="d-flex justify-content-left">
+                <h3 id=tablehead>List of Today's Orders</h3>
+                <table id="table" class="table table-striped table-dark" id="table" style="width: fit-content;">
+                    <thead style="background-color: black;">
+                        <tr>
+                            <th>S.No</th>
+                            <th>Order No.</th>
+                            <th>Customer Name</th>
+                            <th>Customer Number</th>
+                            <th>Order Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if o %}
+                            {% for o in o %}
+                            <tr>
+                                <td class="serial">{{ forloop.counter }}</td>
+                                <td>{{ o.id }}</td>
+                                <td>{{ o.customer.c_fname }} {{o.customer.c_lname }}</td>
+                                <td>{{ o.customer.c_phone }}</td>
+                                <td>{{ o.order_amount }}</td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                    </tbody>
+                    {% if o %}
+                    {% else %}
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                                <tr><td>No Orders</td></tr>
+                    </tfoot>
+                    {% endif %}
+                </table>
+            </div>
+        -->
+        <!--Graphs-->
+    
+           
+    <!--End Graphs-->
+
+</body>
+</html>

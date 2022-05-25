@@ -1,0 +1,152 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <title>Orders</title>
+</head>
+<style>
+   .user_card {
+            position: absolute;
+width: 1000px;
+left: 150px;
+top: 110px;
+
+background: rgba(9, 40, 52, 0.2);
+border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		}
+    </style>
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <div class="user_card">
+                    <div class="d-flex justify-content-left">
+                        <h3>Orders</h3>
+                    </div>
+                    <!--
+                    <div class="justify-content-left">
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                                <div>
+                                    <input type="date" name="orderdate" id="orderdate">
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary" id ="button" type="submit">Search</button>
+                                </div>
+                        </form>
+                    </div>
+                --> <br>
+                    <div class="d-flex justify-content-left" style="height:400px;overflow:auto;background-color: #E5E5E5;">
+                        <table class="container table table-striped" id="table">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Order No.</th>
+                                    <th>Order Date</th>
+                                    <th>Customer Name</th>
+                                    <th>Customer Number</th>
+                                    <th>Order Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if o %}
+                                    {% for o in o %}
+                                    <tr>
+                                        <td class="serial">{{ forloop.counter }}</td>
+                                        <td>{{ o.id }}</td>
+                                        <td>{{ o.order_date|date:"d M Y"}}</td>
+                                        <td>{{ o.customer.c_fname }} {{o.customer.c_lname }}</td>
+                                        <td>{{ o.customer.c_phone }}</td>
+                                        <td>{{ o.order_amount }}</td>
+                                        <td><a href="view-order-specific/{{o.id}}">View</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                            </tbody>
+                            {% if o %}
+                            {% else %}
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                        <tr><td>No Orders</td></tr>
+                            </tfoot>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+<!--
+        <div id="Outerbox"></div>
+        <p id="heading">View Orders</p>
+        <form action="#" method="post">
+        {% csrf_token %}
+            <div>
+                <input type="date" name="orderdate" id="orderdate">
+            </div>
+            <div>
+                <button class="btn btn-primary" id ="button" type="submit">Search</button>
+            </div>
+        </form>
+        <div id="Order-List">
+        <table class="container table table-striped" id="table">
+            <thead class="table-dark">
+                <tr>
+                    <td>S.No</td>
+                    <td>Order No.</td>
+                    <td>Customer Name</td>
+                    <td>Customer Number</td>
+                    <td>Order Amount</td>
+                    <td>Balance</td>
+                    <td>Taken By</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if o %}
+                    {% for o in o %}
+                    <tr>
+                        <td class="serial">{{ forloop.counter }}</td>
+                        <td>{{ o.id }}</td>
+                        <td>{{ o.customer.c_fname }} {{o.customer.c_lname }}</td>
+                        <td>{{ o.customer.c_phone }}</td>
+                        <td>{{ o.order_amount }}</td>
+                        <td></td>
+                        <td>User</td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+            </tbody>
+            {% if o %}
+            {% else %}
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                        <tr><td>Select Date To View Orders</td></tr>
+            </tfoot>
+            {% endif %}
+        </table>
+    </div>
+</body>
+</html>
+
+-->

@@ -1,0 +1,43 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+{% load static %}
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #3A3A3C;">
+    <a class="navbar-brand" href="#">
+      {% load static %}
+<img src="{% static '1.jpeg' %}" alt="My image" style="width:40px;">
+
+    </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="{% url 'homepage' %}">Home</a></li>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Products</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'add-product' %}"><i class="fa fa-plus-circle" style="color: grey;"></i>&nbsp;Add New Product</a>
+          <a class="dropdown-item" href="{% url 'add-supplier' %}"><i class="fa fa-plus-circle" style="color: grey;"></i>&nbsp;Add Supplier</a>
+          <a class="dropdown-item" href="{% url 'add-supply-order' %}"><i class="fa fa-plus-circle"  style="color: grey;"></i>&nbsp;Add Supplier's Invoice</a>
+          <a class="dropdown-item" href="{% url 'view-supply-order' %}"><i class="fa fa-eye"  style="color: grey;"></i>&nbsp;View Supply Orders</a>
+        </div>
+      </li>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Sales</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'find-customer' %}"><i class="fa fa-cart-plus"  style="color: grey;"></i>&nbsp; Take New Order</a>
+          <a class="dropdown-item" href="{% url 'view-order' %}"><i class="fa fa-eye" style="color: grey;"></i>&nbsp;View Orders</a>
+          <a class="dropdown-item" href="{% url 'view-home-delivery' %}"><i class="fa fa-eye" style="color: grey;"></i>&nbsp;View Home Delivery</a>
+          <a class="dropdown-item" href="{% url 'dashboard' %}"><i class="fa fa-chart-line"  style="color: grey;"></i>&nbsp;Sales Summary</a>
+        </div>
+      </li>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+      </li>
+    </ul>
+  </nav>

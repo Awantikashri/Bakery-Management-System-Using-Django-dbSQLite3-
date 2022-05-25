@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Customer</title>
+    <style>
+        #Outerbox
+        {
+            position: absolute;
+            width: 418px;
+            height: 242px;
+            left: 523px;
+            top: 137px;
+
+            background: rgba(52, 123, 152, 0.2);
+            border-radius: 29px;
+        }
+        #heading
+        {
+            position: absolute;
+            width: 159px;
+            height: 33px;
+            left: 547px;
+            top: 146px;
+
+            font-family: Open Sans;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 33px;
+/* identical to box height */
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: -0.02em;
+
+color: #656060;
+        }
+        #itemlabel
+        {
+            
+        position: absolute;
+        width: 77px;
+        height: 19px;
+        left: 557px;
+        top: 208px;
+
+            font-family: Montserrat;font-style: normal;font-weight: 500;font-size: 15px;line-height: 18px;display: flex;align-items: center;letter-spacing: -0.015em;
+            color: #000000;
+        }
+        #i_name
+        {
+            position: absolute;width: 250px;height: 30px;left: 558px;top: 230px;background: #FFFFFF;
+        }
+        #button
+        {
+            position: absolute;width: 88px;height: 40px;left: 598px;top: 290px;
+
+            background: #092834;border-radius: 6px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 18px;
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: -0.015em;
+
+color: #FFFFFF;
+        }
+    </style>
+</head>
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+    <div id="Outerbox"></div>
+    <div>
+        <p id="heading">Add New Item</p>
+        <form method="post" action="#" id="item-form">
+            {%csrf_token%}
+            <div class="form-group">
+                <label for="i_name" id="itemlabel">Item Name:</label>
+                {{form.i_name}}
+            </div>
+            <button type="submit" class="btn btn-primary" id="button">Add Item</button>
+        </form>  
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>HomeDelivery</title>
+<style>
+    .user_card {
+
+
+        position: absolute;width: 628px;left: 385px;top: 110px;
+        background: rgba(52, 123, 152, 0.2);
+        border-radius: 20px;
+border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		}
+
+</style>
+</head>
+
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-left">
+                    <h2>Home Delivery</h2>
+                </div>
+                <div class="d-flex justify-content-left">
+                    <h5>OrderID#{{o.id}}</h5>
+                </div>
+                <div class="justify-content-left">
+                    <form method="post" action="" id="form" >
+                        {%csrf_token%}
+                        <div class="form-group">
+                            <label for="hd_address" id="addresslabel">Delivery Address: </label>
+                            {{forms.hd_address}}
+                        </div>
+                        <div class="d-flex justify-content-left">
+                            <div class="form-group">
+                                <label for="hd_date" id="datelabel">Delivery Date: </label>
+                                <input type="date" name="hd_date" id="hd_date" class="form-control" style="width: fit-content;">
+                                {{forms.hd_date}}
+                            </div>
+                            &nbsp;&nbsp;
+                            <div class="form-group">
+                                <label for="hd_time" id="timelabel">Delivery Time: </label>
+                                <input type="time" name="hd_time" id="hd_time" class="form-control" style="width: fit-content;">
+                                {{forms.hd_time}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hd_instruction" id="inslabel">Delivery Instruction</label>
+                            {{forms.hd_instruction}}
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button class="btn btn-primary" type="submit">Add Details</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>

@@ -1,0 +1,157 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@587;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@587;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <title>Receipt</title>
+</head>
+<style>
+    .user_card {
+
+
+position: absolute;width: 600px;height: 380px;
+background: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    border: thin;
+
+}
+.h1{
+    font-family: 'Noto Serif', serif;
+    font-weight: bolder;
+}
+</style>
+<body>
+    {% load static %}
+    <div class="container h-100">
+            <div class="d-flex justify-content-center ">
+                <h2 >Invoice</h2>
+            </div>
+            <div class="d-flex justify-content-right ">
+                <h5 >Receipt No.&nbsp; {{bill.id}}</h5>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="justify-content-left">
+                    <div>
+                        <h1 class="h1">Bake My Day</h1>
+                    </div>
+                    <div class="justify-content-left">
+                        <h5>#33,Madina Colony,
+                                Gandhi Nagar,
+                                Dharwad
+                                ,Phone:7026110263</h5>
+                    </div>
+                </div>
+                <div class="justify-content-right">
+                        <img src="{% static '7.jpeg' %}" alt="My image" id="img" style="width: 100px;">
+                </div>
+            </div>
+            <br>
+            <div class="d-flex justify-content-between">
+                 <div id="secondbox">
+                    <table >
+                        <tr>
+                            <td>CUSTOMER:</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td>{{bill.order.customer.c_fname}} {{bill.order.customer.c_lname}}</td>
+                        </tr>
+                        <tr>
+                            <td> Phone</td>
+                            <td>{{bill.order.customer.c_phone}}</td>
+                        </tr> 
+                    </table>
+                </div>
+                <div id="FirstBox">
+                    <table>
+                        <tr>
+                            <td>Date:</td>
+                            <td>{{bill.bill_date|date:"d M Y"}}</td>
+                        </tr>
+                        <tr>
+                            <td>Order# &nbsp; </td>
+                            <td>{{bill.order.id}}</td>
+                        </tr>
+                            <tr>
+                                <td>Customer#</td>
+                                <td>{{bill.order.customer.id}}</td>
+                            </tr>
+                        </table>
+                 </div>
+            </div>
+            <br>
+            <div class="justify-content-left" id="thirdbox">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Product</th>
+                            <th>Rate(per 500g )</th>
+                            <th>#Units</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ol in ol %}
+                        <tr>
+                            <td class="serial">{{ forloop.counter }}</td>
+                            <td>{{ ol.product.p_name }}</td>
+                            <td><i class=""></i> {{ ol.product.p_price }}</td>
+                            <td>{{ ol.ol_unit }} &nbsp;</td>
+                            <td>{{ ol.ol_cost }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total:</td>
+                        <td>{{bill.order.order_amount}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Discount</td>
+                            <td>{{ bill.discount.d_percent }}%</td>
+                            <td>-{{bill.discount_bill_amt}}0</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <th>Extra Charges</th>
+                            <td>+{{bill.extra_charge}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <th>Final Amount:</th>
+                            <th><i class="fas fa-rupee-sign"></i> &nbsp;{{bill.bill_amt}}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between">
+                    <a href="#" onclick="window.print();return false;" title="Click to print this page">Print</a>
+                    <a href="{% url 'homepage' %}">Back</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

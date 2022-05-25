@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Home Delivery Orders</title>
+    <style>
+         .user_card {
+            position: absolute;
+width: fit-content;
+left: 150px;
+top: 110px;
+
+background: rgba(9, 40, 52, 0.2);
+border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		}
+
+    </style>
+        
+</head>
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-left">
+                    <h3>Home Delivery Orders</h3>
+                </div>
+                <!--
+                <div class="justify-content-left">
+                    <form method="post" action="#" id="form" >
+                        {%csrf_token%}
+                        <label for="date" id="datelabel">Enter Date:</label>
+                        <div class="d-flex justify-content-left">
+                            <div class="form-group">
+                                <input type="date" class="form-control" id="date" name="o_date" style="width: fit-content;">
+                            </div>
+                            <div class="d-flex justify-content-left">
+                                <button class="btn btn-primary" type="submit"> <i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            -->
+                <br>
+                <div class="d-flex justify-content-left" style="height:400px;overflow:auto;">
+                    <table class="container table table-striped">
+                        <thead>
+                        <tr style="background-color: rgb(95, 94, 94);">
+                            <th>Sr.no</th>
+                            <th>Customer Number</th>
+                            <th>Customer Name</th>
+                            <th>Order ID</th>
+                            <th>Delivery Date</th>
+                            <th>DeliveryTime</th>
+                            <th>Delivery Address</th>
+                            <th>Instructions</th>
+                        </tr>
+                    </thead>
+                        <tbody style="background-color: white;">
+                                {% for h in h %}
+                                <tr>
+                                    <td class="serial">{{ forloop.counter }}</td>
+                                    <td>{{h.order.customer.c_phone}}</td>
+                                    <td>{{h.order.customer.c_fname}} {{h.order.customer.c_lname}}</td>
+                                    <td>{{h.order.id}}</td>
+                                    <td>{{h.hd_date}}</td>
+                                    <td>{{h.hd_time}}</td>
+                                    <td>{{h.hd_address}}</td>
+                                    <td>{{h.hd_instruction}}</td>
+                                </tr>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <title>Customer</title>
+    <style>
+        #Outerbox
+        {
+            position: absolute;
+            width: 676px;
+            height: 335px;
+            left: 383px;
+            top: 147px;
+            background: rgba(9, 40, 52, 0.2);
+            border-radius: 20px;
+
+            display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+        }
+        #heading
+        {
+            position: absolute;
+            width: 300px;
+            height: 31.67px;
+            left: 420px;
+            top: 167px;
+
+            
+            color: #656060;
+        }
+        #phonelabel,#fnamelabel,#lnamelabel,#addresslabel
+        {
+            position: absolute;
+
+            color: #000000;
+        }
+        #c_phone,#c_fname,#c_lname,#c_address
+        {
+            position: absolute;
+        }
+        #c_phone
+        {
+            width: 120px;left: 430px;top: 245px;
+        }
+        #c_fname
+        {
+            width: 165px;left: 430px;top: 315px;
+        }
+        #c_lname
+        {
+            width: 165px;left: 617px;top: 315px;
+        }
+        #c_address
+        {
+            width: 525px;left: 430px;top: 387px;
+        }
+        #phonelabel
+        {
+            width: 200px;left: 430px;top: 222px;
+        }
+        #fnamelabel
+        {
+            width: 100px;left: 430px;top: 293px;
+        }
+        #lnamelabel
+        {
+            width: 100px;left: 617px;top: 293px;
+        }
+        #addresslabel
+        {
+            width: 100px;left: 430px;top: 364px;
+        }
+        #button
+        {
+            position: absolute;width: 118px;height: 34px;left: 671px;top: 436px;
+            background: #092834;border-radius: 6px;
+        }
+    </style>
+</head>
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+    <div id="Outerbox"></div>
+    <div>
+        <h2 id="heading">Add New Customer</h2>
+        <form method="post" action="" id="customer-form">
+            {%csrf_token%}
+            <fieldset disabled>
+                <div class="form-group">
+                    <label for="c_phone" id="phonelabel">Contact:</label>
+                    <input type="text" placeholder="{{customer.c_phone}}" id="c_phone">
+                </div>
+            </fieldset>
+            <div class="d-flex">
+                <div class="form-group">
+                    <label for="c_fname" id="fnamelabel">First Name</label>
+                   {{form.c_fname}}
+                </div>
+                <div class="form-group">
+                    <label for="c_lname" id="lnamelabel">Last Name</label>
+                    {{form.c_lname}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="c_address" id="addresslabel">Address:</label>
+               {{form.c_address}}
+            </div>
+                <button type="submit" class="btn btn-primary" id="button">Add Details</button>
+        </form>  
+    </div>
+</body>
+</html>

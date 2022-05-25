@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+   
+    <title>Update Supply Order</title>
+    <style>
+        .user_card {
+            position: absolute;
+            width: 500px;
+            height: 480px;
+            left: 455px;
+            top: 130px;
+            background: rgba(9, 40, 52, 0.2);
+            border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 15px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		} 
+    </style>
+</head>
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-left">
+                    <h4>Update Receive Date</h4>
+                </div>
+                <div class="justify-content-left">
+                    <form method="POST" action="">
+                        {%csrf_token%}
+                        <fieldset disabled>
+                        <div class="form-group" >
+                            <label for="supplier" id="supplierlabel">Supplier</label>
+                            <input type="text" class="form-control" placeholder="{{i.supplier.s_name}}">
+                        </div>
+    
+                        <div class="form-group" >
+                            <label for="invoice_num" id="invoice_numlabel">Invoice Number </label>
+                            <input type="text" class="form-control" id="invoice_num" name="invoice_num" placeholder="{{ i.invoice_num }}" >
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" id="amountlabel">Total Amount: </label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-rupee-sign"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="invoice_amount" name="invoice_amount" placeholder="{{ i.invoice_amount }}">
+                            </div>
+                        </div>
+                    </fieldset>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-group">
+                                <fieldset disabled>
+                                <label for="order_date" id="orderdatelabel">Order Date: </label>
+                                <input type="text" class="form-control" id="order_date" name="order_date" placeholder="{{ i.order_date }}">
+                            </fieldset>
+                            </div>
+                            <div class="form-group">
+                                <label for="receive_date" id="receivedatelabel">Received On: </label>
+                                <input type="date" class="form-control" id="r_date" name="r_date">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

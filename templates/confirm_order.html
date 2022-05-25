@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+   
+    <title>Confirm</title>
+    <style>
+        .user_card {
+            position: absolute;
+width: 520px;
+left: 448px;
+top: 110px;
+
+background: rgba(9, 40, 52, 0.2);
+border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+			
+		}
+    </style>
+</head>
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-left">
+                    <h2>Confirm Order</h2>
+                </div>
+                <div class="d-flex justify-content-left">
+                    <h5>Customer:
+                    {{ o.customer.c_fname }} {{ bill.order.customer.c_lname }}</h5>
+                </div>
+                <div class="d-flex justify-content-left">
+                    <h5>
+                    Order# {{ o.id}}
+                    </h5>
+                </div>
+                <div class="d-flex justify-content-left">
+                    <h6>Order Amount:
+                        {{o.order_amountt}}</h6>
+                </div>
+                <div class="justify-content-left">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <label for="delivery_mode">Delivery Mode:</label>
+                                </div>
+                        </div>
+                                    <select name="delivery_mode" id="delivery_mode" name="delivery_mode" class="form-control">
+                                        <option value="">Select Delivery Mode</option>
+                                        <option value="pick-up">Pick-Up</option>
+                                        <option value="home">Home Delivery</option>
+                                    </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="extra_charge" id="extrachargelabel">Extra Charge:</label>
+
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-rupee-sign"></i></span>
+                                </div>
+                                <input type="number" name="extra_charge" id="extra_charge" class="form-control" placeholder="Enter Extra Charges">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="paymode" id="paylabel">Payment Method:</label>
+                            <select name="paymode" id="paymode" name="paymode" class="form-control">
+                                <option value="">Select Payment Mode</option>
+                                <option value="cash">Cash</option>
+                                <option value="upi">UPI</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedback" id="commentlabel">Comments</label>
+                            <input type="text" id="feedback" name="feedback" class="form-control" placeholder="Enter Comments">
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button class="btn btn-primary" type="submit">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+        

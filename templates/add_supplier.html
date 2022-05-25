@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Supplier</title>
+    <style>
+     .user_card {
+        position: absolute;
+            width: 1100px;
+            height: 200px;
+            left: 220px;
+            top: 130px;
+            background: rgba(9, 40, 52, 0.2);
+            border-radius: 20px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 9px;
+
+		} 
+        #name
+        {
+            width: 300px;
+        }
+        #address
+        {
+            width: 500px;
+        }
+        #button
+        {
+            background: #092834;
+        } 
+    </style>
+</head>
+<body style="background: #E5E5E5;">
+    {% include 'navbar.html' %}
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-left">
+                    <h2>Add Supplier</h2>
+                </div>
+                <div class="justify-content-left">
+                    <form method="post" action="#" id="form" >
+                        {%csrf_token%}
+                        <div class="d-flex justify-content-between">
+                            <div class="form-group" >
+                                <label for="phone" id="phonelabel">Supplier Phone: </label>
+                                <input type="text" class="form-control" placeholder="Enter phone number" id="phone" name="s_phone">
+                            </div>
+                            &nbsp;&nbsp;
+                            <div class="form-group">
+                                <label for="name" id="namelabel">Supplier Name: </label>
+                                <input type="text" class="form-control" placeholder="Enter supplier name" id="name" name="s_name">
+                            </div>
+                            &nbsp;&nbsp;
+                            <div class="form-group">
+                                <label for="address" id="addresslabel">Supplier Address: </label>
+                                <input type="text" class="form-control" placeholder="Enter the address" id="address" name="s_address">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button class="btn btn-dark" id="button" type="submit">Add Supplier</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
