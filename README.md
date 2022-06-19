@@ -1,7 +1,26 @@
 # BAKERY MANAGEMENT SYSTEM
 This application basically deals with the sales and product management of a bakery based on the Django framework.
 
-![alt text](https://keep.google.com/u/0/media/v2/1EHW3eHX-fnCAzMycwf9b3pTKnfUBjGtXpmJe8yxGE8Ayp8Gz6woDYzKKcqmlOnE/1nIeeuw9eKlfLyGET3dYotieOYbD_vT0T_mhH4WPihYdqYLiMjlz9yFgEaDEGaw?accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp%2Caudio%2Faac&sz=1552)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/login.png)
+
+![alt_text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/homesales.png)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/addcustomer.png)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/createorder.png)
+![alt_text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/confirmorder.png)
+![alt_text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/addhomedelivery.png)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/printwindow.png)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/vieworders.png)
+![alt_text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/dashboard2.png)
+![alt_text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/dashboard.png)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/homeproduct.png)
+
+![ale text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/createproduct.png)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/viewsupplyorder.png)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/addsupplyorder.png)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/updateorder.png)
+![alt text](https://github.com/Awantikashri/Bakery-Management-System-Using-Django-dbSQLite3-/blob/main/UI:UX/addsupplier.png)
+
+
 ---------------------------
 ## PRE-REQUISITES
 1. Python 2.7
