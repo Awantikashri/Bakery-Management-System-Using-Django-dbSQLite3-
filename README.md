@@ -1,5 +1,7 @@
 # BAKERY MANAGEMENT SYSTEM
 This application basically deals with the sales and product management of a bakery based on the Django framework.
+
+![alt text](https://github.com/Awantikashri/Electronic-Sales-Management-System-Oracle-Based/blob/main/Screenshot%202022-05-26%20at%201.03.51%20PM.png)
 ---------------------------
 ## PRE-REQUISITES
 1. Python 2.7
